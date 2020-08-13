@@ -7,42 +7,14 @@ const breakfastBurrito = {name: "Breakfast Burrito", price: 16, category:"Breakf
 /* Task 1a: write a function to return more menu items with the same format as the items above. */
 
       function createNew(name, cost, category) {
-        return {name, price: cost, category};
+        return {name, cost, category};
       }
-      console.log(createNew('Salad', 4, 'appetizer'));
-
-      //* First way of creating object in function
-      function createNewItem(name, cost, category){
-
-        let item = Object.create(latte);
-        item.name = name;
-        item.cost = cost;
-        item.category = category;
-        return item;
-
-      }
-
-      const shrimp = createNewItem('Shrimp', 22, 'Sea Food');
-
-      console.log(shrimp);
-
-      //* Second way of creating object in function (e.g. using function constructor)
-      let items = function createMenuItem(name, cost, category){
-
-          this.name = name;
-          this.cost = cost;
-          this.category = category;
-
-      }
-      const nuggets = new items("Chicken Nugget", 8, "Side Order");
-
-      console.log(nuggets);
 
 /* Task 1b: use your function to create 3 more menu items. You may add any items to the menu that you'd like */
 
-      const lunch = new items("Tacos", 2, "Lunch Special");
-      const dinner = new items("Filon", 42, "Dinner");
-      const happyHours = new items("Modelo", 4, "Happy Drink Hour");
+      const lunch = createNew("Tacos", 2, "Lunch Special");
+      const dinner = createNew("Filon", 42, "Dinner");
+      const happyHours = createNew("Modelo", 4, "Happy Drink Hour");
 
       dinner.drink = "Cabernet";
 
@@ -59,32 +31,30 @@ and should return a number.
 
 For example, burger.discount("teacher") would return 13.5 and burger.discount("public") would return 16.2*/
 
-      burger.discount = function(type) {
+      dinner.discount = function(type) {
         if(type === 'teacher'|| type === 'students')
           return 13.5;
         else
           return 16.2;
       }
       //* Check if discount method added to burger object.
-      console.log(burger);
+      console.log(dinner);
 
       //* Check if discount method works properly.
-      console.log(burger.discount('public'));
+      console.log(dinner.discount('public'));
 
 
 ///////////////Reviews (MVP)///////////////////
 
-const reviews = [{
-  name: "Daniela", 
-  rating: 5, 
-  feedback:"Beautiful atmosphere and wonderful vegan options!"},
-    {name: "Jack", rating: 3, feedback:"A little too hipster for my taste, but the burger was decent, if overpriced"},
-    {name: "Miranda", rating: 4, feedback:"fun trivia and cool vibes"},
-    {name: "Wen", rating: 4.5, feedback:"I don't leave my house often, but when I do, it's for this place. Highly reccomend."},
-    {name: "Brett", rating: 3, feedback: "great selection of snacks and a nice cafe area to get work done during the day."},
-    {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." },
-    {name:"Lauren", rating: 4, feedback: "Absolutely love that they have karaoke Fridays! Food and drink selection is okay."},
-    {name:"Reyna", rating: 3.5, feedback: ""},
+const reviews = [
+  {name: "Daniela", rating: 5, feedback:"Beautiful atmosphere and wonderful vegan options!"},
+  {name: "Jack", rating: 3, feedback:"A little too hipster for my taste, but the burger was decent, if overpriced"},
+  {name: "Miranda", rating: 4, feedback:"fun trivia and cool vibes"},
+  {name: "Wen", rating: 4.5, feedback:"I don't leave my house often, but when I do, it's for this place. Highly reccomend."},
+  {name: "Brett", rating: 3, feedback: "great selection of snacks and a nice cafe area to get work done during the day."},
+  {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." },
+  {name:"Lauren", rating: 4, feedback: "Absolutely love that they have karaoke Fridays! Food and drink selection is okay."},
+  {name:"Reyna", rating: 3.5, feedback: ""},
 ]
 
 /* Task 3: Console.log just Julius' feedback */
@@ -155,6 +125,8 @@ function getReviewByRating(rev, rate) {
   return newArr;
 }
 console.log(getReviewByRating(reviews, 4));
+
+
 
   
 /** STRETCH 2: Write a function called 'getLongestReview' that returns an array containing all reviews longer than 15 words. 
